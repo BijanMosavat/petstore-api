@@ -1,2 +1,7 @@
 flask==3.0.3
 requests==2.32.3
+comprehend-telemetry==0.1.0
+opentelemetry-api==1.35.0
+opentelemetry-sdk==1.35.0
+opentelemetry-instrumentation-flask==0.56b0
+opentelemetry-instrumentation-requests==0.56b0
