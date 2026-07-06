@@ -8,16 +8,16 @@ def configure_comprehend_telemetry(service_name: str, app=None):
         return None
 
     try:
-        from opentelemetry import trace
+        from opentelemetry import trace, metrics
         from opentelemetry.sdk.trace import TracerProvider
         from opentelemetry.sdk.metrics import MeterProvider
         from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
         from opentelemetry.sdk.resources import Resource
-        
+
         # Instrumentation libraries
         from opentelemetry.instrumentation.flask import FlaskInstrumentor
         from opentelemetry.instrumentation.requests import RequestsInstrumentor
-        
+
         # Comprehend core SDK wrapper
         from comprehend_telemetry import ComprehendSDK
     except ImportError as e:
@@ -62,7 +62,7 @@ def configure_comprehend_telemetry(service_name: str, app=None):
             )
         ],
     )
-    trace.set_meter_provider(meter_provider)
+    metrics.set_meter_provider(meter_provider)
 
     # 5. Initialize the Auto-Instrumentors
     if app is not None:
