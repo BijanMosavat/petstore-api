@@ -36,7 +36,7 @@ def configure_comprehend_telemetry(service_name: str, app=None):
     comprehend = ComprehendSDK(
         organization="bijan-sandbox",
         token=token,
-        debug=False,
+        debug=True,
     )
 
     # 3. Configure Tracing
