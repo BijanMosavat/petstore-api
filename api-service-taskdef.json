@@ -8,21 +8,25 @@
   "containerDefinitions": [
     {
       "name": "api",
-      "image": "854727438903.dkr.ecr.eu-north-1.amazonaws.com/petstore-api:latest",
+      "image": "854727438903.dkr.ecr.eu-north-1.amazonaws.com/api-service:latest",
       "cpu": 128,
       "memory": 128,
       "essential": true,
       "portMappings": [
         {
           "containerPort": 5001,
-          "hostPort": 8081,
+          "hostPort": 0,
           "protocol": "tcp"
         }
       ],
       "environment": [
         {
           "name": "CATALOG_URL",
-          "value": "http://172.31.22.225:8080"
+          "value": "http://catalog-service:5000"
+        },
+        {
+          "name": "ORDERS_URL",
+          "value": "http://orders-service:5000"
         }
       ],
       "logConfiguration": {
